@@ -16,17 +16,18 @@ import java.util.Scanner;
 public class TimestampTransfer {
 	@SuppressWarnings("resource")
 	public static void main(String[] args){
-		Scanner scanner = new Scanner(System.in);
-		SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Scanner scanner = new Scanner(System.in);//创建一个扫描器用于获取系统输入
+		SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// 初始化，并对日期字符串进行解析和格式化为yyyy-MM-dd HH:mm:ss
+		SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");//初始化，并对日期字符串进行解析和格式化为yyyy/MM/dd HH:mm:ss
+		//不停读入每行输入
 		while (scanner.hasNext()){
-			String line = scanner.nextLine();
-			Date lineDate = null;
-			long lineTimestamp;
+			String line = scanner.nextLine();//捕获每行输入的数据并赋值给变量line
+			Date lineDate = null;//初始化日期类型的变量lineDate的值为空
+			long lineTimestamp; //定义一个长整形的变量lineTimestamp
 			try {
-				lineDate = inputFormat.parse(line);
-				lineTimestamp = lineDate.getTime();
-				System.out.println(outputFormat.format(lineDate) + " to " + lineTimestamp);
+				lineDate = inputFormat.parse(line);//解析line中的日期字符串成日期并赋值给lineDate
+				lineTimestamp = lineDate.getTime();//将lineDate中的日期转换为毫秒级的时间戳
+				System.out.println(outputFormat.format(lineDate) + " to " + lineTimestamp);//拼接字符串并输出
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
